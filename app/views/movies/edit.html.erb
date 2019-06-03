@@ -1,0 +1,23 @@
+<h1 class = "text-center">Editar Película</h1>
+
+<div class='container mt-5'>
+    <%= form_with(model: @movie, local: true) do |f|%>
+    <div class= "form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control' %>
+    </div> 
+    <div class= "form-group">
+    <%= f.label :year %>
+    <%= f.number_field :year, class: 'form-control' %>
+    </div>
+    <div class= "form-group">
+    <%= f.label :image %>
+    <%= f.text_field :image, class:'form-control' %>
+    </div>
+    <%= f.check_box :favorite %><%= f.label :favorite, 'Agregar a favoritos'%>
+    <div>
+    <%= f.submit 'Guardar' %>
+    <%= link_to "Regresar", movies_path, class: 'btn btn-primary', style: 'float: right;'%>
+    </div>
+    <%end%>
+ </div>

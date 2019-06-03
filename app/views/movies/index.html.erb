@@ -1,0 +1,73 @@
+<h1 class='text-center'>Mis Favoritas</h1>
+
+<% @favorite_movies.each_slice(3) do |movies|%>
+    <div class='row'>
+        <%movies.each do |movie|%>
+            <% if movie.favorite %>
+                <div class= 'text-center col-md-4 mx-auto my-3'>
+                    <div class="card" style="width: 18rem;">
+                        <% if movie.image == "" %>
+                            <%= image_tag "https://www.pequenomundo.cl/wp-content/themes/childcare/images/default.png", class:'card-img-top', style: 'heigth: 90px;'%>
+                        <%else%>
+                            <%= image_tag movie.image, class: 'card-img-top', style: 'heigth: 90px;'%>
+                        <%end%>
+                        <div class="card-body">
+                            <h5 class="card-title"><%= movie.name %></h5>
+                            <p class="card-text"><%= movie.year %></p>
+                            <%if movie.favorite == true %>
+                                <%= image_tag "https://vignette.wikia.nocookie.net/mario/images/5/5e/Estrella.png/revision/latest/scale-to-width-down/185?cb=20100721024447&path-prefix=es", style: 'width: 30px;'%>
+                                <%= link_to  "Desañadir de Favorito", unfavorite_movie_path(movie), class: 'btn btn-primary' %>
+                            <% else %>
+                                <%= link_to  "Añadir a Favorito", favorite_movie_path(movie), class: 'btn btn-primary' %>
+                            <% end %>
+                            
+                        </div>
+                        <div>
+                        <%= link_to  "Ver", movie %>
+                        <%= link_to  "Editar", edit_movie_path(movie) %>
+                        <%= link_to  "Borrar",movie, method: :delete %>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+        <% end %>
+    </div>
+    <br>
+<%end%>
+
+<h1 class='text-center'>Películas</h1>
+
+<% @regular_movies.each_slice(3) do |movies|%>
+    <div class='row'>
+        <%movies.each do |movie|%>
+            <% unless movie.favorite %>
+                <div class= 'text-center col-md-4 mx-auto my-3'>
+                    <div class="card" style="width: 18rem;">
+                        <% if movie.image == "" %>
+                            <%= image_tag "https://www.pequenomundo.cl/wp-content/themes/childcare/images/default.png", class:'card-img-top', style: 'heigth: 90px;'%>
+                        <%else%>
+                            <%= image_tag movie.image, class: 'card-img-top', style: 'heigth: 90px;'%>
+                        <%end%>
+                        <div class="card-body">
+                            <h5 class="card-title"><%= movie.name %></h5>
+                            <p class="card-text"><%= movie.year %></p>
+                            <%= link_to  "Añadir a Favorito", favorite_movie_path(movie), class: 'btn btn-primary' %>
+                        </div>
+                        <div>
+                            <%= link_to  "Ver", movie %>
+                            <%= link_to  "Editar", edit_movie_path(movie) %>
+                            <%= link_to  "Borrar",movie, method: :delete %>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+        <% end %>
+    </div>
+    <br>
+<%end%>
+
+
+<div class = 'text-center'>
+<%= link_to  "Nueva pelicula", movies_new_path, class: 'btn btn-secondary' %>
+</div>
+

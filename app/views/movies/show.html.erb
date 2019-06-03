@@ -1,0 +1,16 @@
+<h1 class= "text-center">Película</h1>
+
+<div class="card mx-auto pt-5 text-center" style="width: 18rem;">
+  <%if @movie.image == "" %>
+    <%= image_tag "https://www.pequenomundo.cl/wp-content/themes/childcare/images/default.png", class:'card-img-top', style: 'heigth: 90px;'%>
+  <% else %>
+    <%= image_tag @movie.image, class: 'card-img-top', style: 'heigth: 90px;'%>
+  <% end %>
+  <div class="card-body">
+    <h5 class="card-title"><%=@movie.name%></h5>
+    <p class="card-text"><%=@movie.year%></p>
+    <% if @movie.favorite %>
+    <p>Película favorita!</p>
+    <% end %>
+  </div>
+</div>

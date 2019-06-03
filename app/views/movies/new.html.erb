@@ -1,0 +1,10 @@
+<%= form_with(model: @movie, local: true) do |f|%>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.label :year %>
+    <%= f.number_field :year %>
+    <%= f.label :image %>
+    <%= f.text_field :image %>
+    <%= f.check_box :favorite %><%= f.label :favorite, 'Agregar a favoritos'%>
+    <%= f.submit 'crear' %>
+ <%end%>
